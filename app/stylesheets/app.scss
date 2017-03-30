@@ -1,0 +1,79 @@
+.hidden {
+  display: none; }
+
+h1 {
+  font-family: 'Cabin', sans-serif;
+  color: #26D0CE; }
+
+h5 {
+  font-family: 'Cabin', sans-serif;
+  color: #26D0CE; }
+
+p {
+  font-family: 'Inconsolata', monospace;
+  color: #26D0CE; }
+
+html body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)), linear-gradient(108deg, #26D0CE, #1A2980 90%);
+  background-size: contain; }
+
+html main {
+  position: relative; }
+
+html header {
+  box-sizing: border-box;
+  text-align: center;
+  background: radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)), linear-gradient(108deg, #26D0CE, #1A2980 90%);
+  padding: 2rem; }
+
+html footer {
+  text-align: center;
+  background: radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)), linear-gradient(108deg, #26D0CE, #1A2980 90%);
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
+
+button {
+  background: #1A2980;
+  color: #26D0CE;
+  border: .1rem solid #26D0CE; }
+
+.welcome {
+  margin: 3rem 10rem; }
+
+.entry-page {
+  text-align: center;
+  width: 70%;
+  margin: auto; }
+  .entry-page input {
+    display: block;
+    margin: 3rem auto; }
+
+.message-page {
+  position: relative; }
+  .message-page .messages-container {
+    background: #1A2980;
+    max-width: 30rem;
+    min-height: 30rem;
+    max-height: 30rem;
+    overflow: scroll;
+    margin: auto; }
+    .message-page .messages-container ul {
+      list-style: none; }
+    .message-page .messages-container .message {
+      color: #fff;
+      font-family: Inconsolata, sans-serif;
+      font-size: 2rem;
+      position: relative; }
+      .message-page .messages-container .message .timestamp {
+        color: #26D0CE;
+        font-size: .8rem;
+        position: absolute;
+        top: 1.6rem;
+        left: 0; }
+  .message-page .input-container {
+    float: right;
+    margin-right: 25%;
+    max-width: 30rem; }
