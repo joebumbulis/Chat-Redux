@@ -3,6 +3,7 @@ import {
 } from 'redux';
 import loginView from './login_view.js'
 import appView from './app_view.js'
+import messageView from './messages_view.js'
 
 export default function app() {
   const url = 'http://tiny-za-server.herokuapp.com/collections/joebum_chat/'
@@ -38,15 +39,15 @@ export default function app() {
                 }
 
                 //get json request here to populate log in page. with time out.
-                $.getJSON(url).then((data, status, xhr) =>{
-                  setTimeout( () => {
-                    store.dispatch({ type: "MESSAGES_LOADED", msgs: data })
-                  }, 2000);
-
-                  //this timeout is for loading animation???
-                })
-                return Object.assign({}, state,  newState);
-                console.log(Newstate);
+                // $.getJSON(url).then((data, status, xhr) =>{
+                //   setTimeout( () => {
+                //     store.dispatch({ type: "MESSAGES_LOADED", msgs: data })
+                //   }, 2000);
+                //
+                //   //this timeout is for loading animation???
+                // })
+                // return Object.assign({}, state,  newState);
+                // console.log(Newstate);
 
             // case "LOAD_MESSAGES":
             //     $.getJSON(url).then((date) =>{
@@ -54,12 +55,12 @@ export default function app() {
             //     });
             //     return state;
 
-            case "MESSAGES_LOADED":
-                var newState = {
-                  msgs: action.msgs,
-                  loadingMsgs: false
-                }
-                return Object.assign({}, state, newState)
+            // case "MESSAGES_LOADED":
+            //     var newState = {
+            //       msgs: action.msgs,
+            //       loadingMsgs: false
+            //     }
+            //     return Object.assign({}, state, newState)
 
                 //
                 //       case "TODOS_LOADED":

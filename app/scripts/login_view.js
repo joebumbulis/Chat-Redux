@@ -1,4 +1,4 @@
-export default function (store){
+export default function loginView(store){
 
 let $html = $(`
 <header>
