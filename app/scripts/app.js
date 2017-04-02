@@ -6,13 +6,12 @@ import appView from './app_view.js'
 import messageView from './messages_view.js'
 
 export default function app() {
-  const url = 'http://tiny-za-server.herokuapp.com/collections/joebum_chat/'
 
     const initialState = {
         user: "Guest User",
         messages: [],
         view: loginView
-    }
+    };
 
 
     const appReducer = function(state, action) {
@@ -37,6 +36,14 @@ export default function app() {
                         view: appView
                     }); //makes a copy of the state before returning it
                 }
+
+                case "MSGS_RECEIVED":
+                console.log('I\'ve received messages');
+                var receivedMessages = action.msgs;
+                return Object.assign({}, state, {
+                  messages: receivedMessages
+                })
+
 
                 //get json request here to populate log in page. with time out.
                 // $.getJSON(url).then((data, status, xhr) =>{
@@ -95,11 +102,7 @@ export default function app() {
         console.log(state)
     }
 
-
-
     store.subscribe(render);
-
-
 
     store.dispatch({
         type: "TESTING",

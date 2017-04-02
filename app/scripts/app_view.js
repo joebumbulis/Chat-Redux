@@ -1,4 +1,4 @@
-import messageView from './messages_view';
+// import messageView from './messages_view';
 
 export default function appView(store){
 
@@ -22,15 +22,40 @@ export default function appView(store){
   </footer>
   `);
 
-  const url = 'http://tiny-za-server.herokuapp.com/collections/joebum_chat/'
+  // const url = 'http://tiny-za-server.herokuapp.com/collections/joebum_chat/'
 
-$.getJSON(url).then((data) =>{
-  let messageContainer = $(html).find('#messages-container');
-  let messageList = data.reverse().map((message, i arr) => {
-      return messageView(store, message);
-    }).join("");
-    messageContainer.html(messageList);
-})
+  var state = store.getState();
+  console.log(state);
+  let messageContainer = $html.find('#messages-container');
+
+  state.messages.forEach((data, i, arr) => {
+    console.log(data);
+    let messageList =  $(`<li class="message">${data.body} <span class="timestamp">was sent by ${data.sender} at ${data.time}<span><button class="message-delete-btn">X</button></li>`);
+      let deleteBtn = messageList.find('.message-delete-btn');
+      deleteBtn.on('click', function(e){
+        const url = 'http://tiny-za-server.herokuapp.com/collections/joebum_chat/'
+        let deleteUrl = url + data._id
+        let deleteMessage = {
+          type: 'DELETE',
+          url: deleteUrl
+        }
+        console.log(deleteUrl)
+
+        $.ajax(deleteMessage).then(function(){
+          messageList.remove()
+        })
+      })
+      messageContainer.append(messageList);
+    })
+
+
+
+//   reverse().map((message, i, arr) => {
+//       return messageView(store, message);
+//     }).join("");
+//     messageContainer.html(messageList);
+// })
+
 
 //justin's code
   // $.getJSON("http://tiny-za-server.herokuapp.com/collections/pub-sub-chat").then((data) => {

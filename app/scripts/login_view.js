@@ -14,11 +14,28 @@ let $html = $(`
 </footer>
 `);
 
+
+
 $($html).find("#sign-in-btn").on('click', (e) => {
+  const url = 'http://tiny-za-server.herokuapp.com/collections/joebum_chat/'
+
+  $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: url
+  }).then((data, status, xhr) =>{
+    console.log(data);
+
+    store.dispatch({
+      type: "MSGS_RECEIVED",
+      msgs: data,
+    })
+  })
     store.dispatch({
         type: "LOG_IN",
         user: $('#user-input').val()
     });
 });
+
 return $html;
 }
