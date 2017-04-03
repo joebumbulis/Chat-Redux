@@ -44,6 +44,7 @@ export default function app() {
                   messages: receivedMessages
                 })
 
+
             case "SEND_MESSAGE":
                 console.log('I sent a message');
                 var newMessage = action.sentMsg;
@@ -98,12 +99,13 @@ export default function app() {
                 return state;
         }
     };
-setTimeout(()=> {
-  store.dispatch({
-    type: "MSGS_RECEIVED"
-  })
-}, 2000);
 
+    setTimeout(()=> {
+      store.dispatch({
+        type: "MSGS_RECEIVED"
+  })
+  }, 2000);
+  
     const store = createStore(appReducer)
 
     const render = function() {
