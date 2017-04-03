@@ -105,6 +105,7 @@ export default function app() {
         type: "MSGS_RECEIVED"
   })
   }, 2000);
+
   
     const store = createStore(appReducer)
 
