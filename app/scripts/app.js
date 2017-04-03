@@ -49,7 +49,7 @@ export default function app() {
                 var newMessage = action.sentMsg;
                 console.log(newMessage);
                 return Object.assign({}, state, {
-                  message: newMessage
+                  messages: newMessage
                 })
                 //get json request here to populate log in page. with time out.
                 // $.getJSON(url).then((data, status, xhr) =>{

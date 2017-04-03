@@ -39,7 +39,7 @@ export default function appView(store) {
             }
             console.log(deleteUrl)
 
-            $.ajax(deleteMessage).then(function() {
+            $.ajax(deleteMessage).then(()=> {
                 messageList.remove()
             })
         })
@@ -49,6 +49,7 @@ export default function appView(store) {
 
     $($html).find(".send-btn").on('click', (e) => {
         let moment = require('moment');
+        let sender = state.user;
         let time = (moment().format("ddd MMMD,YY hh:mmA"));
         let sentMsg = $html.find('.message-input').val()
         const url = 'http://tiny-za-server.herokuapp.com/collections/joebum_chat/'
@@ -58,18 +59,30 @@ export default function appView(store) {
             url: url,
             data: JSON.stringify({
                 time: time,
+                sender: sender,
                 body: sentMsg
             })
         }).then((data, status, xhr) => {
+          let messageContainer = $('#messages-container');
+              let message = $(`<li class="message">${data.body} <span class="timestamp">was sent by ${data.sender} at ${data.time}</span><button class="message-delete-btn">X</button></li>`);
+              let deleteBtn = message.find('.message-delete-btn');
+              deleteBtn.on('click', function(){
+                let deleteMessage = {
+                  type: 'DELETE',
+                  url: url + data._id
+                }
+                $.ajax(deleteMessage).then(function(){
+                  message.remove()
+                })
+              })
+              messageContainer.append(message);
+
             console.log(data)
             store.dispatch({
                 type: "SEND_MESSAGE",
                 sentMsg: data,
             })
         });
-        let newMessage = $(`<li class="message">${sentMsg} <span class="timestamp">was sent by ${sender} at ${time}<span><button class="message-delete-btn">X</button></li>`);
-
-        messageContainer.append()
     });
     return $html;
 }
