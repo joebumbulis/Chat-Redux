@@ -98,6 +98,11 @@ export default function app() {
                 return state;
         }
     };
+setTimeout(()=> {
+  store.dispatch({
+    type: "MSGS_RECEIVED"
+  })
+}, 2000);
 
     const store = createStore(appReducer)
 
