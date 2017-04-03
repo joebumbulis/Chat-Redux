@@ -37,14 +37,20 @@ export default function app() {
                     }); //makes a copy of the state before returning it
                 }
 
-                case "MSGS_RECEIVED":
+            case "MSGS_RECEIVED":
                 console.log('I\'ve received messages');
                 var receivedMessages = action.msgs;
                 return Object.assign({}, state, {
                   messages: receivedMessages
                 })
 
-
+            case "SEND_MESSAGE":
+                console.log('I sent a message');
+                var newMessage = action.sentMsg;
+                console.log(newMessage);
+                return Object.assign({}, state, {
+                  message: newMessage
+                })
                 //get json request here to populate log in page. with time out.
                 // $.getJSON(url).then((data, status, xhr) =>{
                 //   setTimeout( () => {
